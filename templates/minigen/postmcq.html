@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'minigen/css/postmcq.css'%}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" > 
+   
+    <title> Post MCQ </title>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="centre">
+    <div class="centre-middle">
+        <div class="container-fluid">
+            <div class="container">
+                <form action="#" method="post">
+                    {% csrf_token %}
+
+                    <div class="mcq-form">
+                        <label for="question">Question:</label>
+                        <input type="text" id="question" name="question" required>
+                    </div>
+                    <div class="mcq-form">
+                        <label for="reference">Reference:</label>
+                        <input type="text" id="reference" name="reference" required>
+                    </div>
+                    <div class="mcq-form">
+                         <label for="answer1"><input type="radio" id="answer1" name="answer" value="option1" required> Option 1</label>
+                        <input type="text" id="option1" name="option1" required>
+                    </div>
+                    <div class="mcq-form">
+                        <label for="answer2"><input type="radio" id="answer2" name="answer" value="option2" required> Option 2</label>
+                        <input type="text" id="option2" name="option2" required>
+                    </div>
+                    <div class="mcq-form">
+                        <label for="answer3"><input type="radio" id="answer3" name="answer" value="option3" required> Option 3</label>
+                        <input type="text" id="option3" name="option3" required>
+                    </div>
+                    <div class="mcq-form">
+                        <label for="answer4"><input type="radio" id="answer4" name="answer" value="option4" required> Option 4</label>
+                        <input type="text" id="option4" name="option4" required>
+                    </div>
+                    
+                    <div class="mcq-form">
+                        <button type="submit">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+</div>        
+
+</body>
+</html>

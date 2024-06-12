@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'minigen/css/support.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title> Support </title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="centre">
+    <div class="centre-left">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="centre-left-top">
+                    <h1>Profile</h1>
+                    <hr>
+                    <div class="centre-left-links">
+                        
+                            <a href="{% url 'profile_view' user.username %}">
+                                 View Profile
+                            </a>
+                        
+                        
+                            <a href="#">
+                                 Contact
+                            </a>
+                        
+                        
+                            <a href="#">
+                                 Settings
+                            </a>
+                        
+                        
+                            <a href="/">
+                                 Log out
+                            </a>
+                        
+                    </div>
+                    <hr><br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+    <div class="centre-middle">
+
+            <div class="container">
+            <br>
+                    <form  method="post">
+                        {% csrf_token %}
+                        
+                        <div class="signin-form">
+                            <label for="fullname">  Full Name : </label> <br>
+                            <input type="text" id="fullname" name="fullname" required> <br>
+                        </div>
+                       <div class="signin-form">
+                            <label for="email">  Email: </label> <br>
+                            <input type="email" id="email" name="email" required> <br>
+                        </div>
+
+                        <div class="signin-form">
+                            <label for="faqbody">  Text: </label> <br>
+                            <textarea id="faqbody" name="faqbody" rows="4" cols="50">
+                            </textarea><br>
+                        </div>
+                        
+                        <div class="signin-form">
+                            <button type="submit"> Send </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+    
+
+</div>
+
+</body>
+</html>

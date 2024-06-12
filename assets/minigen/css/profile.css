@@ -1,0 +1,581 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    width: 90%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.container {
+    width: 100%;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 96%;
+    margin-left: 2%;
+    margin-top: 0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    background-color: #e4eaf7;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.mini-home {
+    flex: 1;
+    text-align: center;
+}
+
+.mini-home a {
+    width: 100%;
+    display: inline-block;
+
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.menu-home {
+    flex: 1;
+    text-align: center;
+}
+
+.menu-home a {
+    width: 50%;
+    display: inline-block;
+
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #1378DA;
+    font-size: 30px;
+}
+
+.menu-home a:hover,
+.mini-home a:hover {
+    background-color: #1378DA;
+    color: white;
+}
+
+.menu-home a i {
+    font-size: 30px;
+    margin-top: 2px;
+}
+
+
+
+/* Centre container */
+.centre {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: space-between; /* Distribute space between items */
+    margin-top: 5em;
+}
+
+/* Centre-left specific styles */
+.centre-left {
+    width: 25%; /* Set width to 20% */
+}
+
+/* Centre-middle specific styles */
+.centre-middle {
+    width: 75%; /* Set width to 80% */
+}
+
+/* Centre-right specific styles */
+.centre-right {
+    width: 100%; /* Set width to 100% */
+    margin-top: 20px; /* Add some space between middle and right sections */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Styles for individual containers within centre-right */
+.centre-right .container {
+    display: inline-block; /* Display containers inline */
+    vertical-align: top; /* Align containers to the top */
+}
+
+.centre-right-middle {
+    display: inline-block; /* Display user profiles inline */
+    margin-right: 10px; /* Add some margin between user profiles */
+    vertical-align: top; /* Align user profiles to the top */
+    max-width: 200px; /* Set a maximum width for each user profile */
+}
+
+/* Centre left section */
+.centre-left h1,
+.centre-right h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.profile-info img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-right: 1em;
+}
+
+.profile-bio h4 {
+    margin-bottom: 0.5em;
+}
+
+.profile-bio h2 {
+    margin-bottom: 0.5em;
+}
+
+.profile-infos p {
+    margin: 0.5em 0;
+}
+
+.edit-icon {
+    color: #1378DA;
+    cursor: pointer;
+}
+
+/* Pagination styles */
+.pagination {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.step-links {
+    display: inline-block;
+    border-top: 1px solid #ccc;
+    padding-top: 0.5em;
+}
+
+.step-links a {
+    padding: 0.5em;
+    text-decoration: none;
+    color: #1378DA;
+}
+
+.step-links .current {
+    font-weight: bold;
+    color: #1378DA;
+}
+
+.step-links a:hover {
+    color: #74C0FC;
+}
+
+/* Centre right section */
+.centre-right {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.centre-right-top h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.centre-right-top hr {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.centre-right-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px;
+}
+
+.centre-right-container {
+    min-width: 200px; /* Adjust this width as needed */
+    flex: 0 0 auto;
+    padding: 0 15px;
+    border: 1px solid #e4eaf7;
+    background-color: #e4eaf7;
+    border-radius: 10px;
+}
+
+.centre-right-profile {
+    width: 90%;
+}
+
+
+
+.centre-right-middle-profile-image img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    margin-right: 10px;
+    margin-left: 25% ;
+}
+
+.centre-right-middle-profile-info a {
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+}
+
+.centre-right-middle-profile-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Optional: Style for the scroll bar */
+.centre-right-scroll::-webkit-scrollbar {
+    height: 10px;
+}
+
+.centre-right-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+}
+
+.centre-right-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+
+
+/* Responsive design */
+
+
+
+
+@media (max-width: 768px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container-fluid {
+        width: 90%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 96%;
+        margin-left: 2%;
+        margin-top: 0%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5px 0;
+        background-color: #e4eaf7;
+        z-index: 1000;
+        border-radius: 10px;
+    }
+    
+    .mini-home {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .mini-home a {
+        width: 100%;
+        display: inline-block;
+        
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 10px;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: black;
+        font-size: 25px;
+        text-decoration: none;
+    }
+    
+    .menu-home {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .menu-home a {
+        width: 80%;
+        display: inline-block;
+        
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 10px;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: #1378DA;
+        font-size: 25px;
+    }
+    
+    .menu-home a:hover,
+    .mini-home a:hover {
+        background-color: #1378DA;
+        color: white;
+    }
+    
+    .menu-home a i {
+        font-size: 30px;
+        margin-top: 2px;
+    }
+
+    .centre {
+        flex-wrap: wrap; /* Revert to wrap on smaller screens */
+    }
+    
+    .centre-left,
+    .centre-middle,
+    .centre-right {
+        width: 100%; /* Full width for smaller screens */
+        margin-right: 0; /* Remove right margin */
+    }
+
+    /* Responsive styles for centre-left links */
+    .centre-left-links {
+        flex-direction: column; /* Display links in a row */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .centre-left-links div {
+        flex: 0 0 48%; /* Each link takes about half the width, adjust as needed */
+        margin-bottom: 10px; /* Space between rows */
+    }
+
+    .centre-left-links div:nth-child(odd) {
+        margin-right: 4%; /* Space between columns */
+    }
+    .centre {
+        flex-wrap: wrap; /* Revert to wrap on smaller screens */
+    }
+    
+    .centre-left,
+    .centre-middle,
+    .centre-right {
+        width: 100%; /* Full width for smaller screens */
+        margin-right: 0; /* Remove right margin */
+    }
+
+    /* Responsive styles for centre-left links */
+    .centre-left-links {
+        flex-direction: row; /* Display links in a row */
+        flex-wrap: wrap; /* Allow wrapping */
+        font-size: 12px;
+    }
+
+    
+
+    .centre-left-links div {
+        flex: 0 0 48%; /* Each link takes about half the width, adjust as needed */
+        margin-bottom: 10px; /* Space between rows */
+    }
+
+    .centre-left-links div:nth-child(odd) {
+        margin-right: 4%; /* Space between columns */
+    }
+
+    .slide-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    }
+
+    .slide-container .container {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+
+
+
+
+/* Profile info row styles */
+.profile-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.profile-info-label {
+    flex: 1;
+    font-weight: bold;
+}
+
+.profile-info-value {
+    flex: 2;
+}
+
+.profile-info-edit button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-icon {
+    color: #1378DA;
+}
+
+.profile-picture-container {
+    position: relative; /* Make the container relative */
+    display: inline-block; /* Ensure inline-block to fit the content */
+}
+
+.edit-icon-link {
+    position: absolute; /* Position the edit icon relative to its container */
+    bottom: 5px; /* Adjust the position as needed */
+    right: 5px; /* Adjust the position as needed */
+}
+
+.profile-picture {
+    display: block;
+    width: 200px; /* Adjust the size of the profile picture as needed */
+    height: 200px; /* Adjust the size of the profile picture as needed */
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.profile-bio {
+    width: 100%;
+    background-color: #FAF9FE;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.profile-bio h2 {
+    
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 10px;
+    
+}
+
+.profile-bio h2 button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.edit-icon {
+    margin-left: 5px;
+    color: #1378DA;
+    float: right;
+}
+
+.centre-left-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.centre-left-links div {
+    margin-bottom: 10px; /* Optional: adds some space between the links */
+}
+
+@media (max-width: 768px) {
+    .centre-left-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .centre-left-links div {
+        flex: 1;
+        text-align: center; /* Optional: centers the text inside each div */
+        margin-bottom: 0; /* Removes the bottom margin to avoid extra space */
+        margin-left: 5px;
+        width: auto;
+    }
+
+    .centre-left-links div a {
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px; /* Optional: adds some padding around the links */
+    }
+}
+
+.centre-left-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.centre-left-links a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.centre-left-links a i {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .centre-left-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .centre-left-links a {
+        flex: 1;
+        justify-content: center;
+        margin-bottom: 0;
+        padding: 10px;
+    }
+
+    .centre-left-top h1 {
+        display: none;
+
+    }
+}

@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'minigen/css/notification.css' %}">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" > 
+   
+    <title> Notifications </title>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 
+
+
+
+<div class="notification-fluid">
+{% for notification in notifications %}
+    
+        <div class="notification">
+            <div class="centre-middle-top">
+                <div class="centre-middle-top-profile-image">
+                    {% if notification.follower.profileinfo.image %}
+                        <img src="{{ notification.follower.profileinfo.image.url }}" alt="{{ notification.follower.username }}'s profile picture" class="profile-image">
+                    {% else %}
+                        <img src="{% static 'media/profile_pics/profile-image.png'%}" alt="Profile Picture">
+                    {% endif %}
+                </div>
+                <div class="centre-middle-top-profile-info">
+                    <a href="{% url 'profile_view' notification.follower.username %}"> {{ notification.follower.username }} <p>{{ notification.message }} <small>{{ notification.created_at }}</small> </p> </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+         
+{% endfor %}
+</div>  
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'minigen/css/mini.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+    <title>Mini</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="centre">
+    <div class="container">
+        <h1 class="mt-4">Responses</h1>
+        <table class="table table-bordered table-striped mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User</th>
+                    <th>Question</th>
+                    <th>Selected Option</th>
+                    <th>Reference</th>
+                    
+                    <th>Created At</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for response in responses %}
+                {% if response.is_correct %}
+                    <tr>
+                        <td>{{ response.user.username }}</td>
+                        <td>{{ response.mcq_post.question }}</td>
+                        <td>{% if response.selected_option == 'option1' %}
+                                {{ response.mcq_post.option1 }}
+                            {% elif response.selected_option == 'option2' %}
+                                {{ response.mcq_post.option2 }}
+                            {% elif response.selected_option == 'option3' %}
+                                {{ response.mcq_post.option3 }}
+                            {% elif response.selected_option == 'option4' %}
+                                {{ response.mcq_post.option4 }}
+                            {% endif %}</td>
+                        
+                        <td>{{ response.mcq_post.reference }}</td>
+                        <td>{{ response.created_at }}</td>
+                        
+                    </tr>
+                {% endif %}    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

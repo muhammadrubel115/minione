@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'miniaccounts/css/signin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+    <title>Mini</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="centre">
+    <div class="centre-left">
+        
+        <button type="button" onclick="location.href='{% url 'forgot_email' %}'">Forgot Email</button>
+        <button type="button" onclick="location.href='{% url 'forgot_password' %}'">Forgot Password</button>
+    </div>
+    <div class="centre-middle">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="centre-middle-top">
+                <div class="centre-middle-top-signup">
+                    <button type="button" onclick="location.href='{% url 'register' %}'">Create Account</button>
+                </div>
+                <br>
+                <h1>Sign In to Your Account</h1>
+
+            </div>
+             {% if messages %}
+            <p class="message {% for message in messages %} {{ message.tags }} {% endfor %}">
+                {% for message in messages %}
+                    {{ message }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+        </div>
+        <div class="container">
+           
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="signin-form">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="signin-form">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="signin-form">
+                        <button type="submit">Sign In</button>
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="bottom">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="bottom-content">
+                <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                <a href="{% url 'terms_and_conditions' %}">Terms & Conditions</a>
+                <a href="{% url 'cookies' %}">Cookies</a>
+                <a href="{% url 'faq' %}">FAQ</a>
+                <a href="{% url 'developers' %}">Developers</a>
+                <a href="{% url 'about' %}">About</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

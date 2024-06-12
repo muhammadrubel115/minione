@@ -1,0 +1,212 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'minigen/css/change_username.css'%}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" > 
+   
+    <title> change_username </title>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ref ">
+    <div class="container-fluid ">
+        <div class="container">
+            <div class="tags ">    
+                <button type="submit" onclick="location.href='{% url 'change_username' %}'"> Change Username </button>
+                <button type="submit"> Change Bio </button>
+                <button type="submit"> Change Account Type </button>
+                <button type="submit"> Change Country </button>
+                <button type="submit"> Change Gender </button>
+                <button type="submit"> Change DOB </button>
+                <button type="submit"> Change Email </button>
+                <button type="submit"> Change Phone Number </button>
+                <button type="submit"> Change Password </button>
+                <button type="submit"> Change Photo </button>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div class="centre">
+        
+    <div class="centre-left">
+        
+        <div class="container-fluid">
+
+            <div class="container">
+                <div class="centre-left-top">
+                    <h1> Profile </h1><hr>
+                   
+                   <div>
+                        <a href="#"> 
+                        <i class="fa-solid fa-user-secret" style="color: #74C0FC;"></i> View Profile </a>
+                   </div>
+                   
+                   <div>
+                        <a href="#">
+                        <i class="fa-solid fa-person-shelter" style="color: #74C0FC;"></i>  Contact </a>
+                   </div>
+                   <div>
+                        <a href="#">
+                        <i class="fa-solid fa-gear" style="color: #74C0FC;"></i>  Settings </a>
+                   </div>
+                   <div>
+                        <a href="{% url 'logout' %}">
+                        <i class="fa-solid fa-right-from-bracket" style="color: #74C0FC;"></i>  Log out </a>
+                   </div><br>      
+                </div>
+            </div>
+    
+            
+        </div>
+
+    </div>
+ 
+    
+    <div class="centre-middle">
+       
+        <div class="container-fluid">
+
+            <div class="container">
+                <div class="centre-middle-top">
+                    <p>  Change Username ? </p>
+                    <br> <hr> 
+                    {% if messages %}
+                        
+                            {% for message in messages %} 
+                               <p> {{ message }} </p>
+                            {% endfor %}
+                        
+                    {% endif %} 
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="centre-middle-middle">
+                    <br>
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        <div class="signin-form">
+                            <label for="new_username">  new_username: </label> <br>
+                            <input type="text" id="new_username" name="new_username" required> <br>
+                        </div>
+
+                       
+                        <div class="signin-form">
+                            <button type="submit"> Submit </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>        
+    
+    <div class="centre-right">
+
+       <div class="containter-fluid">
+            
+            <div class="container">
+                <div class="centre-right-top">
+                    <h1> Followers </h1>
+                    <hr> 
+                </div>
+            </div>
+            
+       </div>
+
+       <div class="container-fluid">
+            <div class="container">
+                <div class="centre-right-middle">
+                    <div class="centre-right-middle-profile-image">
+                        <img src="{% static 'minigen/images/teacher1.webp'%}">
+                    </div>
+                        
+                    <div class="centre-right-middle-profile-info">
+                        <a href="#"> Mohammad Rubel </a>
+                        <button type="submit"> Follow </button>
+                        <p> Bangladesh &#x2022; Person &#x2022; 1.5k </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="centre-right-middle">
+                    <div class="centre-right-middle-profile-image">
+                        <img src="{% static 'minigen/images/teacher2.webp' %}">
+                    </div>
+                        
+                    <div class="centre-right-middle-profile-info">
+                        <a href="#"> Mohammad Arman Hossain </a>
+                        <button type="submit"> Follow </button>
+                        <p> Bangladesh &#x2022; Person &#x2022; 1.9k </p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="container">
+                <div class="centre-right-middle">
+                    <div class="centre-right-middle-profile-image">
+                        <img src="{% static 'minigen/images/course1.webp'%}">
+                    </div>
+                        
+                    <div class="centre-right-middle-profile-info">
+                        <a href="#"> General Mathematics </a>
+                        <button type="submit"> Follow </button>
+                        <p> Bangladesh &#x2022; Book &#x2022; 1.9k </p>
+                    </div>
+                </div>
+            </div>
+            
+       </div>
+    </div>
+    
+</div>
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'minigen/css/profile_view.css'%}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" > 
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>{{ profile_user.username }}'s Profile </title>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        
+<div class="centre">
+        
+    <div class="centre-left">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="centre-left-top">
+                    <h1>Profile</h1>
+                    <hr>
+                    <div class="centre-left-links">
+                        
+                            <a href="{% url 'profile_view' user.username %}">
+                                 View Profile
+                            </a>
+                        
+                        
+                            <a href="#">
+                                 Contact
+                            </a>
+                        
+                        
+                            <a href="#">
+                                 Settings
+                            </a>
+                        
+                        
+                            <a href="/">
+                                 Log out
+                            </a>
+                        
+                    </div>
+                    <hr><br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+ 
+    
+    <div class="centre-middle">
+       
+        <div class="container-fluid">
+            
+            <div class="container">
+            <div class="profile-info">
+                {% if profile_user.profileinfo.image %}
+                    <img src="{{ profile_user.profileinfo.image.url }}" alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'media/profile_pics/profile-image.png'%}" alt="Profile Picture">
+                {% endif %}
+                
+            </div>
+            <div class="profile-info-label">
+                <h3>{{ request.user.profileinfo.acc_name }}</h3>
+
+                {% if request.user != profile_user %}
+                    {% if request.user in profile_user.profileinfo.followers.all %}
+                        <form action="{% url 'unfollow' profile_user.username %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Unfollow</button>
+                        </form>
+                    {% else %}
+                        <form action="{% url 'follow' profile_user.username %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Follow</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <div class="profile-info-label">
+                            <p>@{{ request.user.username }}</p>
+                        </div>
+                    
+            </div>
+
+            <div class="container">
+            <div class="profile-bio">
+                <h2>  Bio </h2>
+                <p> {{ profile_user.profileinfo.bio }}  </p>    
+            </div> 
+            </div>
+            
+        </div>
+
+        <div class="container-fluid">
+            <div class="container">
+            <div class="profile-infos">
+                <p>Followers: {{ profile_user.profileinfo.followers.count }}</p>
+                <p>Following: {{ profile_user.profileinfo.following.count }}</p>   
+            </div>
+
+            
+            </div>    
+        </div>
+</div>
+
+      
+
+    <div class="centre-right">
+    
+        
+            <div class="centre-right-top">
+                <h1> Following ({{ following_users.paginator.count }}) </h1>
+                <hr> 
+            </div>
+        
+    
+
+    <div class="centre-right-scroll">
+        {% for user in following_users %}
+        <div class="centre-right-container">    
+            <div class="container">
+                {% with user.profileinfo as profile %}
+                    
+                        <div class="centre-right-middle-profile-image">
+                            {% if profile.image %}
+                                <img src="{{ profile.image.url }}" alt="Profile Picture">
+                            {% else %}
+                                <img src="{% static 'miniaccounts/images/teacher1.webp' %}" alt="profile-pic">
+                            {% endif %}
+                        </div>
+                        <div class="centre-right-middle-profile-info">
+                            <a href="{% url 'profile_view' user.username %}">{{ user.username }}</a>
+                            
+                            <p> {{ profile.country }}&#x2022; {{ profile.acc_type }} &#x2022; {{ profile.followers.count }} </p>
+                        </div>
+                    
+                {% endwith %}
+            </div>
+        </div>    
+        {% endfor %}     
+    
+    
+    <!-- Pagination Controls -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if following_users.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ following_users.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ following_users.number }} of {{ following_users.paginator.num_pages }}.
+                    </span>
+
+                    {% if following_users.has_next %}
+                        <a href="?page={{ following_users.next_page_number }}">next</a>
+                        <a href="?page={{ following_users.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+
+<div class="user-post">
+        {% for post in user_posts %}
+    <div class="user-post-mcq">
+        <div class="container">
+            <div class="centre-middle-top">
+                <div class="centre-middle-top-profile-image">
+                    {% if profile_user.profileinfo.image %}
+                        <img src="{{ profile_user.profileinfo.image.url }}" alt="Profile Picture">
+                    {% else %}
+                        <p>No profile picture available</p>
+                    {% endif %}
+                </div>
+
+                <div class="centre-middle-top-profile-info">
+                    <a href="{% url 'profile_view' profile_user.username %}">{{ profile_user.username }}</a>
+                  
+                    <p>{{ profile.country }} &#x2022; {{ profile.acc_type }} &#x2022; {{ profile_user.profileinfo.followers.count }}</p>
+                </div>
+            
+            </div>
+
+            <div class="container">
+           
+
+                <div class="centre-middle-top-post">
+                    <div class="centre-middle-top-question">
+                        <p>{{ post.question }}</p>    
+                        <span> {{ post.reference }} </span>
+                        
+                    </div>
+
+                    <div class="centre-middle-top-mcq">
+                        <form class="mcq-form" method="post" action="{% url 'home' %}" data-post-id="{{ post.id }}">
+                            {% csrf_token %}
+                            <input type="hidden" name="mcq_post_id" value="{{ post.id }}">
+                            <div>
+                                <label><input type="radio" name="option" value="option1"> {{ post.option1 }}</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="option" value="option2"> {{ post.option2 }}</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="option" value="option3"> {{ post.option3 }}</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="option" value="option4"> {{ post.option4 }}</label>
+                            </div>
+                            <button type="submit">Submit</button>
+                        </form>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="centre-middle-top-infos">
+            <div class="centre-middle-top-user-follows">
+                <div class="centre-middle-top-user-follow-infos">{{ post.count_correct_answers }} | <i class="fa-solid fa-check" style="color: #74C0FC;"></i></div>
+                <div class="centre-middle-top-user-follow-infos">{{ post.count_incorrect_answers }} | <i class="fa-solid fa-xmark" style="color: #74C0FC;"></i></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('.mcq-form').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var form = $(this);
+            var url = form.attr('action');
+            var formData = form.serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                success: function(response) {
+                    // Handle success - update the page dynamically
+                    $('.messages').remove(); // Remove old messages
+                    form.before('<div class="messages">' + response.message + '</div>');
+                },
+                error: function(response) {
+                    // Handle error
+                    console.log('Error:', response);
+                }
+            });
+        });
+    });
+</script>  
+
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'minigen/css/profile.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>{{ profile_user.username }}'s Profile</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="centre">
+    <div class="centre-left">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="centre-left-top">
+                    <h1>Profile</h1>
+                    <hr>
+                    <div class="centre-left-links">
+                        
+                            <a href="{% url 'profile_view' user.username %}">
+                                 View Profile
+                            </a>
+                        
+                        
+                            <a href="{% url 'support' %}"> 
+                                 Support
+                            </a>
+                        
+                        
+                            <a href="{% url 'settings' %}">
+                                 Settings
+                            </a>
+                        
+                        
+                            <a href="/">
+                                 Log out
+                            </a>
+                        
+                    </div>
+                    <hr><br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+    <div class="centre-middle">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="profile-info">
+                    <div class="profile-picture-container">
+                        {% if request.user.profileinfo.image %}
+                            <img class="profile-picture" src="{{ request.user.profileinfo.image.url }}" alt="Profile Picture">
+                        {% else %}
+                            <img class="profile-picture" src="{% static 'media/profile_pics/profile-image.png' %}" alt="Profile Picture">
+                        {% endif %}
+                        <a href="{% url 'change_profile_picture' %}" class="edit-icon-link">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-infos">
+                    <div class="profile-info-row">
+                        <div class="profile-info-label">
+                            <h3>{{ request.user.profileinfo.acc_name }}</h3>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="profile-infos">
+                    <div class="profile-info-row">
+                        <div class="profile-info-label">
+                            <p>@{{ request.user.username }}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="profile-bio">
+                    <h2>Bio
+                        
+                    </h2>
+                    <p>{{ request.user.profileinfo.bio }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="profile-infos">
+                <div class="profile-info-row">
+                    <div class="profile-info-label">Account category:</div>
+                    <div class="profile-info-value">{{ request.user.profileinfo.acc_type }}</div>
+                    
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label">Country:</div>
+                    <div class="profile-info-value">{{ request.user.profileinfo.country }}</div>
+                    
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label">Gender:</div>
+                    <div class="profile-info-value">{{ request.user.profileinfo.gender }}</div>
+                    
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label">Date of Birth:</div>
+                    <div class="profile-info-value">{{ request.user.profileinfo.dob }}</div>
+                    
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label">Email:</div>
+                    <div class="profile-info-value">{{ request.user.email }}</div>
+                    
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label">Recovery Email:</div>
+                    <div class="profile-info-value">{{ request.user.profileinfo.remail }}</div>
+                    
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label">Phone Number:</div>
+                    <div class="profile-info-value">{{ request.user.profileinfo.phone }}</div>
+                    
+                </div>
+                <!-- Repeat similar structure for other profile info -->
+            </div>
+        </div>
+    </div>
+
+    <div class="centre-right">
+    <div class="centre-right-top">
+        <h1>Followers ({{ users.paginator.count }})</h1>
+        <hr>
+    </div>
+
+    <div class="centre-right-scroll">
+        {% if users %}
+            {% for user in users %}
+                <div class="centre-right-container">
+                    <div class="container">
+                        <div class="centre-right-middle-profile-image">
+                            {% if user.profileinfo.image %}
+                                <img src="{{ user.profileinfo.image.url }}" alt="Profile Picture">
+                            {% else %}
+                                <img src="{% static 'miniaccounts/images/teacher1.webp' %}" alt="profile-pic">
+                            {% endif %}
+                        </div>
+                        <div class="centre-right-middle-profile-info">
+                            <a href="{% url 'profile_view' user.username %}">{{ user.username }}</a>
+                            <p>{{ user.profileinfo.country }} &#x2022; {{ user.profileinfo.acc_type }} &#x2022; {{ user.profileinfo.followers.count }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if users.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ users.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ users.number }} of {{ users.paginator.num_pages }}.
+                </span>
+
+                {% if users.has_next %}
+                    <a href="?page={{ users.next_page_number }}">next</a>
+                    <a href="?page={{ users.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    {% else %}
+        <p>No followers found.</p>
+    {% endif %}
+</div>
+
+</div>
+
+</body>
+</html>

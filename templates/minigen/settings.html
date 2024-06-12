@@ -1,0 +1,200 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'minigen/css/settings.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title> Settings </title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="menu">
+            <div class="mini-home">
+                <a href="{% url 'home' %}" class="button-class">MiniWorld</a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'home' %}" class="icon-button" aria-label="Home">
+                    <i class="fa-solid fa-house icon"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'postmcq' %}" class="icon-button" aria-label="Post MCQ">
+                    <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'notification' %}" class="icon-button" aria-label="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'search' %}" class="icon-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+            <div class="menu-home">
+                <a href="{% url 'profile' %}" class="icon-button" aria-label="Profile">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="centre">
+    <div class="centre-left">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="centre-left-top">
+                    <h1>Profile</h1>
+                    <hr>
+                    <div class="centre-left-links">
+                        
+                            <a href="{% url 'profile_view' user.username %}">
+                                 View Profile
+                            </a>
+                        
+                        
+                            <a href="#">
+                                 Contact
+                            </a>
+                        
+                        
+                            <a href="#">
+                                 Settings
+                            </a>
+                        
+                        
+                            <a href="/">
+                                 Log out
+                            </a>
+                        
+                    </div>
+                    <hr><br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+    <div class="centre-middle">
+
+            <div class="container">
+            <div class="profile-infos">
+
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Username </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_username' %}'">
+                                <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Email </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_email' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Password </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_password' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Account Name </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_account_name' %}'">
+                                <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Bio </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_bio' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Account category </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_account_category' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Country </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'update_country' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Gender </div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_gender' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Update Date of Birth</div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_dob' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Recovery Email</div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_remail' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-label"> Change Phone Number</div>
+                    
+                    <div class="profile-info-edit">
+                        <button type="submit" onclick="location.href='{% url 'change_phone_number' %}'">
+                            <i class="fas fa-edit edit-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Repeat similar structure for other profile info -->
+            </div>
+
+    </div>
+
+    
+
+</div>
+
+</body>
+</html>

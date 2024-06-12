@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    width: 90%;
+    padding: 0 15px;
+    margin: 0 auto;
+    margin-left: 5%;
+}
+
+.container {
+    width: 100%;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 96%;
+    margin-left: 2%;
+    margin-top: 0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    background-color: #e4eaf7;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.mini-home {
+    flex: 1;
+    text-align: center;
+}
+
+.mini-home a {
+    width: 100%;
+    display: inline-block;
+    
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.menu-home {
+    flex: 1;
+    text-align: center;
+}
+
+.menu-home a {
+    width: 50%;
+    display: inline-block;
+    
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #1378DA;
+    font-size: 30px;
+}
+
+.menu-home a:hover,
+.mini-home a:hover {
+    background-color: #1378DA;
+    color: white;
+}
+
+.menu-home a i {
+    font-size: 30px;
+    margin-top: 2px;
+}
+
+
+
+.centre {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 20px;
+    margin-top: 70px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+thead {
+    background-color: #343a40;
+    color: white;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+td, th {
+    padding: 15px;
+    text-align: left;
+}
+
+
+
+@media (max-width: 768px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container-fluid {
+        width: 90%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 96%;
+        margin-left: 2%;
+        margin-top: 0%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5px 0;
+        background-color: #e4eaf7;
+        z-index: 1000;
+        border-radius: 10px;
+    }
+    
+    .mini-home {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .mini-home a {
+        width: 100%;
+        display: inline-block;
+        
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 10px;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: black;
+        font-size: 25px;
+        text-decoration: none;
+    }
+    
+    .menu-home {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .menu-home a {
+        width: 80%;
+        display: inline-block;
+        
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 10px;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: #1378DA;
+        font-size: 25px;
+    }
+    
+    .menu-home a:hover,
+    .mini-home a:hover {
+        background-color: #1378DA;
+        color: white;
+    }
+    
+    .menu-home a i {
+        font-size: 30px;
+        margin-top: 2px;
+    }
+
+    .centre {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    
+}
